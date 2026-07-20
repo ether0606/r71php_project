@@ -25,16 +25,22 @@ class crud_class{
         ];
     
         $sql = "SELECT $columns FROM $table";
+        //$where=[id=>1, name=>'John'];
         if(!empty($where)){
             $where_clauses = [];
             foreach($where as $column => $value){
                 $where_clauses[] = "$column = '$value'";
+                //$where_clauses[] = "id='1'"
+                //$where_clauses[] = "name='kamal'"
             }
+
             $sql .= " WHERE " . implode(" $where_condition ", $where_clauses);
+            // "SELECT * FROM users WHERE id='1' AND name='kamal'"
         }
 
         if(!empty($order_by)){
             $sql .= " ORDER BY $order_by $sort_order";
+             // "SELECT * FROM users WHERE id='1' AND name='kamal' ORDER BY name ASC"
         }
 
         if(!empty($limit)){
@@ -42,6 +48,8 @@ class crud_class{
             if(!empty($offset)){
                 $sql .= " OFFSET $offset";
             }
+
+            // "SELECT * FROM users WHERE id='1' AND name='kamal' ORDER BY name ASC LIMIT 10 OFFSET 5"
         }
 
         $rs = $this->conn->query($sql);
