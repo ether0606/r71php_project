@@ -1,45 +1,59 @@
-<?php
 
-require_once "crud/crud_class.php";
-$crud = new crud_class();
+<?php require_once "component/header.php"; ?>
 
-?>
+<!-- Sidebar Start -->
+<?php require_once "component/sidebar.php"; ?>
+<!-- Sidebar End -->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Document</title>
-</head>
-<body>
-    <form action="" method="post">
-        <label for="name">Name:</label>
-        <input type="text" name="name" placeholder="Enter your name"><br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-xl-8">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Add User</h6>
+                <form action="" method="post">
+                    <div class="row mb-3">
+                        <label for="name" class="col-sm-4 col-form-label">Name</label>
+                        <div class="col-sm-8">
+                            <input name="name" type="text" class="form-control" id="name" placeholder="Enter your name">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="email" class="col-sm-4 col-form-label">Email</label>
+                        <div class="col-sm-8">
+                            <input name="email" type="email" class="form-control" id="email" placeholder="Enter your email">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="contact_no" class="col-sm-4 col-form-label">Contact Number</label>
+                        <div class="col-sm-8">
+                            <input name="contact_no" type="text" class="form-control" id="contact_no" placeholder="Enter your contact number">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="password" class="col-sm-4 col-form-label">Password</label>
+                        <div class="col-sm-8">
+                            <input name="password" type="password" class="form-control" id="password" placeholder="Enter your password">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+       
 
-        <label for="email">Email:</label>
-        <input type="text" name="email" placeholder="Enter your email"><br>
 
-        <label for="contact_no">Contact Number:</label>
-        <input type="text" name="contact_no" placeholder="Enter your contact number"><br>
-
-        <label for="password">Password:</label>
-        <input type="password" name="password" placeholder="Enter your password"><br>
-
-        <input type="submit" value="Submit">
-    </form>
     <?php
         if($_POST){
             $_POST['password'] = sha1($_POST['password']);
             $rs=$crud->common_insert("users", $_POST);
             if($rs && $rs['status']){
-                echo "New record created successfully";
-                header("Location: users_list.php");
+                echo "<script>window.location='users_list.php'</script>";
             } else {
                 echo "Error: " . $rs['message'];
             }
         }
     ?>
-</body>
-</html>
+
+<?php require_once "component/footer.php"; ?>
