@@ -9,7 +9,9 @@
                 <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
             </div>
             <div class="ms-3">
-                <h6 class="mb-0">Jhon Doe</h6>
+                <h6 class="mb-0">
+                    <?= $_SESSION['user']->name ?>
+                </h6>
                 <span>Admin</span>
             </div>
         </div>
@@ -18,8 +20,8 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Users</a>
                 <div class="dropdown-menu bg-transparent border-0">
-                    <a href="users_list.php" class="dropdown-item">Users List</a>
-                    <a href="insert_user.php" class="dropdown-item">Add User</a>
+                    <a href="<?= $base_url ?>users/users_list.php" class="dropdown-item">Users List</a>
+                    <a href="<?= $base_url ?>users/insert_user.php" class="dropdown-item">Add User</a>
                 </div>
             </div>
             <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
@@ -118,12 +120,12 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="<?= $base_url; ?>assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                            <span class="d-none d-lg-inline-flex"><?= $_SESSION['user']->name ?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+                            <a href="<?= $base_url; ?>logout.php" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>

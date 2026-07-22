@@ -1,7 +1,7 @@
 <?php
 
-require_once "crud/crud_class.php";
-$crud = new crud_class();
+require_once "../component/connection.php";
+
 $id = $_GET['id'];
 
 // Fetch the user details based on the ID

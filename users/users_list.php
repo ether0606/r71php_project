@@ -1,8 +1,8 @@
 
-<?php require_once "component/header.php"; ?>
+<?php require_once "../component/header.php"; ?>
 
 <!-- Sidebar Start -->
-<?php require_once "component/sidebar.php"; ?>
+<?php require_once "../component/sidebar.php"; ?>
 <!-- Sidebar End -->
     <h6 class="mb-4">Users List</h6>
 
@@ -38,4 +38,4 @@
         </table>
     </div>
 
-<?php require_once "component/footer.php"; ?>
+<?php require_once "../component/footer.php"; ?>
